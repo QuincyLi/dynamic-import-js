@@ -46,10 +46,7 @@ module.exports = {
             loader: 'style-loader'
           },
           {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
+            loader: 'css-loader'
           }
         ]
       },
@@ -86,6 +83,11 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      Popper: ['popper.js', 'default'],
     }),
     new webpack.NamedModulesPlugin(), // 新增
     new webpack.optimize.OccurrenceOrderPlugin(),
