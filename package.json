@@ -1,0 +1,54 @@
+{
+  "name": "dynamic-import",
+  "version": "1.0.0",
+  "description": "dynamic import static resources in server",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=DEV node server/app.js",
+    "prod": "cross-env NODE_ENV=PROD node server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://QuincyLi@github.com/QuincyLi/dynamic-import-js.git"
+  },
+  "author": "QuincuLi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QuincyLi/dynamic-import-js/issues"
+  },
+  "homepage": "https://github.com/QuincyLi/dynamic-import-js#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "koa": "^2.5.3",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "popper.js": "^1.14.4",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "webpack": "^4.18.0",
+    "webpack-cli": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "koa-webpack-dev-middleware": "^2.0.2",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.23.0"
+  }
+}
