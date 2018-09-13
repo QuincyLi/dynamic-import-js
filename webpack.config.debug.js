@@ -1,6 +1,5 @@
 var path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const webpackRequireHttp = require('webpack-require-http');
 const webpack = require('webpack'); // 新增
 
 module.exports = {

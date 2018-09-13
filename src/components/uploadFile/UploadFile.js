@@ -13,7 +13,9 @@ class UploadFile extends Component {
     const file = this.file.files[0];
     const formData = new FormData();
     formData.append('file', file);
-    upload(formData);
+    upload(formData).then((res) => {
+      this.props.setCompName(res.fileName);
+    });
   }
 
   displayName = () => {

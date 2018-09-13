@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import ReactDom from 'react-dom';
 
+import { getUploadJS } from '../services/uploadFiles';
 export function dynamic(component) {
   return class dynamicWrapper extends Component {
     state = {
@@ -8,18 +10,10 @@ export function dynamic(component) {
 
     componentDidMount() {
       this.mounted = true;
-      if (typeof component === 'function') {
-        component()
-          .then(res => res.default)
-          .then((resComp) => {
-            if (this.mounted) {
-              this.setState({
-                LoadedComp: resComp
-              });
-            }
-          }).catch((error) => {
-            console.error(error);
-          })
+      if (typeof component === 'string' && component) {
+        getUploadJS(component).then((res) => {
+          ReactDom.hydrate(res.html);
+        });
       }
     }
 

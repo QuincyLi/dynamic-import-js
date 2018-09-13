@@ -12,11 +12,18 @@ function request(url, options) {
 }
 
 export function upload(param = {}) {
-  request('/upload', {
+  return request('/upload', {
     method: 'POST',
     // headers: {
     //   'Content-type': 'multipart/form-data;'
     // },
-    body: param 
+    body: param
   });
+}
+
+export function getUploadJS(fileName) {
+  return request('/getUploadJS', {
+    method: 'POST',
+    body: JSON.stringify({ fileName })
+  })
 }
