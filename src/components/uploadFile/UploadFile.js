@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { upload } from '../../services/uploadFiles';
 
 class UploadFile extends Component {
   state = {
@@ -9,6 +10,10 @@ class UploadFile extends Component {
     this.setState({
       fileName: this.file.files[0].name
     });
+    const file = this.file.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    upload(formData);
   }
 
   displayName = () => {

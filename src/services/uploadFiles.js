@@ -11,8 +11,12 @@ function request(url, options) {
   });
 }
 
-export function upload() {
+export function upload(param = {}) {
   request('/upload', {
-    method: 'POST'
+    method: 'POST',
+    // headers: {
+    //   'Content-type': 'multipart/form-data;'
+    // },
+    body: param 
   });
 }

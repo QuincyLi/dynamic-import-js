@@ -1,9 +1,12 @@
 import koa from 'koa';
 import path from 'path';
-import router from 'koa-router';
+import Router from 'koa-router';
 import serve from 'koa-static';
 
+import index from '../router/index';
+
 const app = new koa();
+const router = new Router();
 const staticPath = process.env.NODE_ENV === 'DEV' ? path.resolve('./src') : path.resolve('./dist/src');
 
 if (process.env.NODE_ENV === 'DEV') {
@@ -29,6 +32,9 @@ if (process.env.NODE_ENV === 'DEV') {
 app.use(
   serve(staticPath)
 )
+
+router.use('', index.routes(), index.allowedMethods());
+app.use(router.routes(), router.allowedMethods());
 
 app.listen(3000, () => {
   console.log('you are listening on port 3000');
