@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import * as core from '@babel/core';
 import Router from 'koa-router';
 import koaBody from 'koa-body';
+import React from 'react';
 import reactDomServer from 'react-dom/server';
 
 const index = new Router();
@@ -28,9 +30,13 @@ index.post('/upload',
 index.post('/getUploadJS', koaBody(), async (ctx) => {
   const { fileName } = JSON.parse(ctx.request.body);
   const filePath = path.join(__dirname, '../extensions') + `/${fileName}`;
+  const Element = require(filePath).default;
   const element = fs.readFileSync(filePath, 'utf-8');
-  console.log(element);
-  ctx.body = JSON.stringify({ html : element });
+  // const element = core.transformFileSync(filePath).code;
+  // console.log(element);
+  const html = reactDomServer.renderToString(<Element/>);
+  // console.log(html);
+  ctx.body = JSON.stringify({ html, functional: element });
 });
 
 export default index;
