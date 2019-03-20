@@ -65,8 +65,8 @@ export function captureWay(fileName) {
 
   return fetch(`http://localhost:3000/${fileName}`).then(res => res.text()).then(source => {
     const module = babel.transform(source, options).code;
-    eval(module);
-
+    // eval(module);
+    new Function(module)();
     return exports.__esModule ? exports.default : exports;
   });
 }
